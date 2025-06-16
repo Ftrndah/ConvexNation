@@ -11,6 +11,7 @@
   --border-color: rgba(255, 255, 255, 0.1);
   --glow-color: rgba(169, 99, 209, 0.7);
   --bg-4-top-color: #1e4e5b;
+  /* [DIKEMBALIKAN] Variabel Warna Hijau Telur Asin */
   --sim-text-green: #c7f2a4;
   --telur-asin-green: #a7d7c5;
   --telur-asin-green-hover: #89b4a4;
@@ -668,19 +669,10 @@ body {
   max-width: 800px;
   padding: 2rem;
   border-radius: 15px;
-  width: 100%;
 }
 
 .simulasi-intro .wizard-title {
   margin-bottom: 2rem;
-}
-
-/* [PERBAIKAN LEBIH AGRESIF] Gunakan clamp() untuk font responsif yang lebih baik */
-.simulasi-intro .wizard-title h3 {
-  /* Ukuran min 1.5rem, ideal 5vw, max 2.2rem */
-  font-size: clamp(1.5rem, 5vw, 2.2rem);
-  white-space: normal; /* Izinkan teks judul untuk wrap */
-  line-height: 1.2; /* Beri jarak antar baris jika judulnya wrap */
 }
 
 .simulasi-intro-text {
@@ -692,8 +684,6 @@ body {
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  /* [PERBAIKAN LEBIH AGRESIF] */
-  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
 }
 
 .cta-button {
@@ -725,6 +715,7 @@ body {
   overflow: hidden;
 }
 
+/* [DITAMBAHKAN] Kontainer Salju */
 #snow-container {
   position: absolute;
   top: 0;
@@ -751,6 +742,7 @@ body {
     transform: translateY(110vh) translateX(5vw);
   }
 }
+/* Akhir Penambahan Salju */
 
 .container-simulasi {
   max-width: 1000px;
@@ -919,12 +911,7 @@ body {
 /* Media Queries */
 @media (max-width: 992px) {
   .convex-hull-wrapper {
-    flex-direction: column;
     text-align: center;
-  }
-  .convex-hull-text {
-    padding-right: 0;
-    margin-bottom: 2rem;
   }
 }
 
@@ -936,12 +923,15 @@ body {
   .wizard-title h3 {
     font-size: 2rem;
   }
+
+  /* [PERBAIKAN] Aturan khusus untuk judul di bagian simulasi agar tidak terpotong */
+  .simulasi-intro .wizard-title h3 {
+    white-space: normal; /* Memungkinkan teks untuk turun baris */
+    line-height: 1.2; /* Mengatur jarak antar baris jika teksnya turun */
+  }
+
   .wizard-title .ornament::before {
     width: 40px;
-  }
-  .home .content h1 {
-    /* [PERBAIKAN LEBIH AGRESIF] */
-    font-size: clamp(2.5rem, 8vw, 3.5em);
   }
   .convex-hull-text h2 {
     font-size: 2.5rem;
@@ -968,17 +958,7 @@ body {
     width: 100%;
     height: auto;
   }
-
-  .simulasi-intro {
-    padding: 4rem 4%;
-  }
-
-  .cta-button {
-    padding: 0.8rem 2rem;
-    font-size: 1.1rem;
-  }
 }
-
 @media (max-width: 758px) {
   html {
     font-size: 62.5%;
@@ -1013,7 +993,9 @@ body {
     align-items: flex-start;
     padding-top: 25vh;
   }
-
+  .home .content h1 {
+    font-size: 2.8em;
+  }
   .home .content p {
     font-size: 1.1rem;
     line-height: 1.6;
@@ -1025,9 +1007,5 @@ body {
   }
   .wizard-title .ornament {
     display: none;
-  }
-
-  .simulasi-intro {
-    padding: 5rem 2%;
   }
 }
