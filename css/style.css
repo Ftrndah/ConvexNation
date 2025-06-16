@@ -654,7 +654,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 5rem 7%; /* Padding awal untuk desktop */
+  padding: 5rem 7%;
   background-image: url("../img/bg-6.gif");
   background-size: cover;
   background-position: center top;
@@ -668,11 +668,19 @@ body {
   max-width: 800px;
   padding: 2rem;
   border-radius: 15px;
-  width: 100%; /* [DITAMBAHKAN] Pastikan content mengisi padding */
+  width: 100%;
 }
 
 .simulasi-intro .wizard-title {
   margin-bottom: 2rem;
+}
+
+/* [PERBAIKAN LEBIH AGRESIF] Gunakan clamp() untuk font responsif yang lebih baik */
+.simulasi-intro .wizard-title h3 {
+  /* Ukuran min 1.5rem, ideal 5vw, max 2.2rem */
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
+  white-space: normal; /* Izinkan teks judul untuk wrap */
+  line-height: 1.2; /* Beri jarak antar baris jika judulnya wrap */
 }
 
 .simulasi-intro-text {
@@ -684,6 +692,8 @@ body {
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  /* [PERBAIKAN LEBIH AGRESIF] */
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
 }
 
 .cta-button {
@@ -909,12 +919,12 @@ body {
 /* Media Queries */
 @media (max-width: 992px) {
   .convex-hull-wrapper {
-    flex-direction: column; /* [DIPERBAIKI] Agar tumpuk ke bawah */
+    flex-direction: column;
     text-align: center;
   }
   .convex-hull-text {
-    padding-right: 0; /* [DIPERBAIKI] Hapus padding kanan */
-    margin-bottom: 2rem; /* [DIPERBAIKI] Beri jarak ke bawah */
+    padding-right: 0;
+    margin-bottom: 2rem;
   }
 }
 
@@ -928,6 +938,10 @@ body {
   }
   .wizard-title .ornament::before {
     width: 40px;
+  }
+  .home .content h1 {
+    /* [PERBAIKAN LEBIH AGRESIF] */
+    font-size: clamp(2.5rem, 8vw, 3.5em);
   }
   .convex-hull-text h2 {
     font-size: 2.5rem;
@@ -955,20 +969,12 @@ body {
     height: auto;
   }
 
-  /* [DIPERBAIKI] Perbaikan untuk bagian simulasi intro di layar tablet */
   .simulasi-intro {
-    padding: 4rem 4%; /* Kurangi padding horizontal */
+    padding: 4rem 4%;
   }
-  .simulasi-intro .wizard-title h3 {
-    font-size: 1.8rem; /* Kecilkan judul */
-    letter-spacing: 0.1rem;
-    white-space: normal; /* Izinkan teks judul untuk wrap */
-  }
-  .simulasi-intro-text {
-    font-size: 1rem; /* Kecilkan teks paragraf */
-  }
+
   .cta-button {
-    padding: 0.8rem 2rem; /* Kecilkan tombol */
+    padding: 0.8rem 2rem;
     font-size: 1.1rem;
   }
 }
@@ -1007,9 +1013,7 @@ body {
     align-items: flex-start;
     padding-top: 25vh;
   }
-  .home .content h1 {
-    font-size: 2.8em;
-  }
+
   .home .content p {
     font-size: 1.1rem;
     line-height: 1.6;
@@ -1023,11 +1027,7 @@ body {
     display: none;
   }
 
-  /* [DIPERBAIKI] Perbaikan lebih lanjut untuk layar HP */
   .simulasi-intro {
-    padding: 5rem 2%; /* Kurangi padding lebih banyak */
-  }
-  .simulasi-intro .wizard-title h3 {
-    font-size: 1.5rem; /* Kecilkan judul lebih lanjut */
+    padding: 5rem 2%;
   }
 }
