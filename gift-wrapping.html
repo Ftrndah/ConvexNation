@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gift Wrapping Algorithm</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="index.html" class="navbar-logo">Kelompok<span>Delapan</span></a>
+      <div class="navbar-nav">
+        <a href="index.html#home">Home</a>
+        <div class="dropdown">
+          <a href="index.html#convex-hull" class="dropbtn">Convex Hull</a>
+          <div class="dropdown-content">
+            <a href="gift-wrapping.html">Gift Wrapping</a>
+            <a href="graham-scan.html">Graham Scan</a>
+            <a href="chan-algorithm.html">Chan Algorithm</a>
+            <a href="divide-and-conquer.html">Divide and Conquer</a>
+          </div>
+        </div>
+        <a href="index.html#Simulasi">Simulasi</a>
+        <a href="index.html#about">Tentang Kami</a>
+      </div>
+
+      <div class="navbar-extra">
+        <a href="#" id="search"><i data-feather="search"></i></a>
+        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+      </div>
+    </nav>
+    <section id="gift-wrapping-page" class="convex-hull">
+      <h2><span>Gift Wrapping Algorithm</span> (Jarvis March)</h2>
+      <div class="underline"></div>
+      <div class="algorithm-details">
+        <img src="img/jarvis.png" alt="jarvis" class="algorithm-img" />
+        <p class="jarvis1">
+          Kunci algoritma pada wrapping gift sebagai berikut:
+        </p>
+        <p class="jarvis-a">1. Mulai dari Paling Kiri</p>
+        <p class="jarvis-aa">
+          Algoritma selalu memulai dari titik yang posisinya paling kiri (titik
+          dengan nilai x terkecil) dalam kumpulan titik.
+        </p>
+        <p class="jarvis-b">
+          2. Mencari Titik Paling Kiri Relatif terhadap Titik Saat Ini
+        </p>
+        <p class="jarvis-bb">
+          Dari titik saat ini, algoritma akan memeriksa semua titik lain untuk
+          mencari titik yang berada paling kiri jika dibandingkan dengan arah
+          pandang dari titik saat ini — ini seperti membungkus titik-titik
+          secara melingkar dari luar.
+        </p>
+        <p class="jarvis-c">
+          3. Menggunakan Determinan untuk Menentukan Arah Belok
+        </p>
+        <p class="jarvis-cc">
+          Untuk menentukan apakah suatu titik berada di sebelah kiri atau kanan,
+          digunakan perhitungan determinan dari tiga titik. Jika hasilnya
+          positif, berarti titik tersebut membentuk belokan ke kiri (ciri bentuk
+          cembung).
+        </p>
+        <p class="jarvis-d">4. Berhenti Saat Kembali ke Titik Awal</p>
+        <p class="jarvis-dd">
+          Proses ini diulang terus hingga kembali ke titik awal, membentuk
+          sebuah poligon cembung (convex polygon) yang menjadi convex hull dari
+          seluruh titik.
+        </p>
+
+        <p class="jarvis2">Langkah-langkah:</p>
+        <p class="jarvis-1">1. Cari titik awal (p)</p>
+        <p class="jarvis-11">
+          Pilih titik dengan koordinat y terendah. Jika ada beberapa titik
+          dengan y terendah. Jika ada beberapa titik dengan y terendah yang
+          sama, pilih yang memiliki koordinat x terkecil. uat perulangan sampai
+          kembali ke titik awal
+        </p>
+        <p class="jarvis-2">
+          2. Cari titik berikutnya (q) yang memiliki sudut paling besar (paling
+          berlawanan arah jarum jam) dari titik saat ini
+        </p>
+        <p class="jarvis-21">
+          - Mulai dengan memilih sembarang titik sebagai kandidat q
+        </p>
+        <p class="jarvis-22">
+          - Untuk setiap titik lain r, periksa apakah r berada di sebelah kiri
+          garis dari p ke q
+        </p>
+        <p class="jarvis-23">- Jika r di sebelah kiri, ganti q dengan r</p>
+        <p class="jarvis-24">
+          - Lanjutkan sampai semua titik diperiksa. Tambahkan q ke convex hull
+          Pindah ke titik berikutnya: Jadikan q sebagai titik p untuk iterasi
+          selanjutnya
+        </p>
+        <p class="jarvis-3">3. Berhenti ketika kembali ke titik awal</p>
+      </div>
+    </section>
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <script src="js/script.js"></script>
+
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>

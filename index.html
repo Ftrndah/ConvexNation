@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Convex Hull</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&family=Cinzel:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="#" class="navbar-logo"
+        >Kelompok<span class="shine">Delapan</span></a
+      >
+      <div class="navbar-nav">
+        <a href="#home">Home</a>
+        <div class="dropdown">
+          <a href="#convex-hull">Convex Hull</a>
+          <div class="dropdown-content">
+            <a href="#algorithms-section" data-target="card-gift-wrapping"
+              >Gift Wrapping</a
+            >
+            <a href="#algorithms-section" data-target="card-graham-scan"
+              >Graham Scan</a
+            >
+            <a href="#algorithms-section" data-target="card-chan">Chan</a>
+            <a href="#algorithms-section" data-target="card-divide-conquer"
+              >Divide and Conquer</a
+            >
+          </div>
+        </div>
+        <a href="#Simulasi">Simulasi</a>
+      </div>
+      <div class="navbar-extra">
+        <a href="#" id="search-button"><i data-feather="search"></i></a>
+        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+      </div>
+
+      <div class="search-form-container">
+        <form id="search-form">
+          <input
+            type="search"
+            id="search-box"
+            placeholder="Cari di sini..."
+            autocomplete="off"
+          />
+        </form>
+        <span id="search-counter"></span>
+      </div>
+    </nav>
+
+    <section id="home" class="home">
+      <div class="curtain left" onclick="openCurtains()"></div>
+      <div class="curtain right" onclick="openCurtains()"></div>
+      <main class="content">
+        <h1>Selamat Datang di Website <span>Convex Hull</span></h1>
+        <p>
+          Website ini didedikasikan untuk membantu Anda dalam memahami konsep
+          Convex Hull. Salah satu hal penting pada geometri komputasi adalah
+          menentukan convex hull dari kumpulan titik-titik. Sebuah dasar penting
+          dalam geometri komputasi yang sering digunakan dalam berbagai bidang
+          seperti pemetaan dan robotika.
+        </p>
+      </main>
+    </section>
+
+    <main id="main-content">
+      <section id="convex-hull" class="convex-hull">
+        <div class="convex-hull-intro animate-on-scroll">
+          <div class="convex-hull-wrapper">
+            <div class="convex-hull-text">
+              <h2><span>Apa itu</span> Convex Hull?</h2>
+              <p>
+                Secara sederhana, convex hull adalah poligon cembung terkecil
+                yang membungkus sekelompok titik, seperti "amplop" terluar yang
+                mengelilinginya.
+              </p>
+            </div>
+            <div class="algorithm-tags">
+              <div class="tag">Gift Wrapping</div>
+              <div class="tag">Graham Scan</div>
+              <div class="tag">Chan's Algorithm</div>
+              <div class="tag">Divide & Conquer</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="convex-hull-details">
+          <div class="concept-section concept-1 animate-on-scroll">
+            <div class="wizard-title">
+              <span class="ornament"></span>
+              <h3>Memahami Konsep Dasar</h3>
+              <span class="ornament"></span>
+            </div>
+            <div class="content-image">
+              <img src="img/convex-hull.jpg" alt="Contoh Convex Hull" />
+            </div>
+            <div class="content-text">
+              <p>
+                Convex hull dari sekumpulan titik dalam ruang Euclidean
+                merupakan bentuk cembung terkecil yang mencakup seluruh titik
+                tersebut. Pada ruang dua dimensi (2D), convex hull membentuk
+                sebuah poligon cembung.
+              </p>
+            </div>
+          </div>
+
+          <div class="concept-section concept-2 animate-on-scroll">
+            <div class="wizard-title">
+              <span class="ornament"></span>
+              <h3>Convex vs Non-Convex</h3>
+              <span class="ornament"></span>
+            </div>
+            <div class="content-image">
+              <img src="img/convex-pentagon.png" alt="Perbandingan Convex" />
+            </div>
+            <div class="content-text">
+              <p>
+                Sebuah bentuk disebut cembung (convex) jika setiap garis lurus
+                yang menghubungkan dua titik di dalamnya sepenuhnya berada di
+                dalam bentuk tersebut. Gambar di samping menunjukkan
+                perbedaannya.
+              </p>
+              <p>
+                Pada Pentagon Cembung, semua diagonal (garis hijau) berada di
+                dalam. Sebaliknya, pada Pentagon Cekung, ada diagonal (garis
+                merah) yang keluar dari bangun.
+              </p>
+            </div>
+          </div>
+
+          <div
+            id="algorithms-section"
+            class="algorithms-list-wrapper animate-on-scroll"
+          >
+            <div class="fireflies"></div>
+            <div class="wizard-title">
+              <span class="ornament"></span>
+              <h3>4 Algoritma Convex Hull</h3>
+              <span class="ornament"></span>
+            </div>
+            <div class="cards-gallery">
+              <div class="card-row">
+                <div id="card-gift-wrapping" class="card-container">
+                  <div class="card-inner">
+                    <div class="card-front">
+                      <h4>Gift Wrapping</h4>
+                    </div>
+                    <div class="card-back">
+                      <h5>Gift Wrapping (Jarvis March)</h5>
+                      <p>
+                        Dimulai dari titik terluar, algoritma ini "membungkus"
+                        titik-titik, mencari titik berikutnya dengan sudut
+                        terkecil secara berurutan hingga kembali ke titik awal.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div id="card-graham-scan" class="card-container">
+                  <div class="card-inner">
+                    <div class="card-front">
+                      <h4>Graham's Scan</h4>
+                    </div>
+                    <div class="card-back">
+                      <h5>Graham's Scan</h5>
+                      <p>
+                        Mengurutkan titik berdasarkan sudut, lalu menggunakan
+                        'stack' untuk membangun hull. Titik yang menyebabkan
+                        belokan "ke dalam" akan dibuang.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-row">
+                <div id="card-chan" class="card-container">
+                  <div class="card-inner">
+                    <div class="card-front">
+                      <h4>Chan's Algorithm</h4>
+                    </div>
+                    <div class="card-back">
+                      <h5>Chan's Algorithm</h5>
+                      <p>
+                        Sangat efisien untuk data besar. Memecah titik menjadi
+                        kelompok kecil, mencari convex hull di masing-masing,
+                        lalu menggabungkannya.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div id="card-divide-conquer" class="card-container">
+                  <div class="card-inner">
+                    <div class="card-front">
+                      <h4>Divide & Conquer</h4>
+                    </div>
+                    <div class="card-back">
+                      <h5>Divide and Conquer</h5>
+                      <p>
+                        Memecah kumpulan titik menjadi dua bagian, mencari
+                        convex hull untuk masing-masing secara rekursif, lalu
+                        menggabungkan kedua hull.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- [DIPERBARUI] Bagian Intro Simulasi dengan konten yang sesuai gambar -->
+      <section id="Simulasi" class="simulasi-intro animate-on-scroll">
+        <div class="content">
+          <div class="wizard-title animate-child">
+            <span class="ornament"></span>
+            <h3>SIMULASI ALGORITMA CONVEX HULL</h3>
+            <span class="ornament"></span>
+          </div>
+          <p class="simulasi-intro-text animate-child">
+            Di sini Anda dapat bereksperimen dengan menambahkan titik dan
+            melihat bagaimana algoritma Graham Scan dan Gift Wrapping (Jarvis
+            March) membangun Convex Hull langkah demi langkah.
+          </p>
+          <a href="#simulasi-main" class="cta-button animate-child"
+            >Coba Simulasi</a
+          >
+        </div>
+      </section>
+
+      <!-- [DIPERBARUI] Bagian Konten Simulasi Utama -->
+      <section id="simulasi-main" class="simulasi-content-section">
+        <!-- Teks 'Eksperimen Interaktif' dihapus dari sini -->
+        <div id="snow-container"></div>
+        <div class="container-simulasi">
+          <div class="controls-section">
+            <h2>Ikuti Langkah Berikut</h2>
+            <div class="input-group">
+              <label>Tambah Titik dengan Mengklik Kanvas:</label>
+              <p style="font-size: 0.9em; color: #aaa">
+                Klik di mana saja pada area kanvas putih untuk menambahkan
+                titik.
+              </p>
+            </div>
+
+            <div class="input-group">
+              <label>Atau Tambah Manual:</label>
+              <div class="point-input-manual">
+                X:
+                <input type="number" id="xCoord" placeholder="cth., 50" />
+                Y:
+                <input type="number" id="yCoord" placeholder="cth., 50" />
+                <button class="button-simulasi" onclick="addPointManual()">
+                  Tambah
+                </button>
+              </div>
+            </div>
+
+            <button class="button-simulasi" onclick="addSamplePoints()">
+              Tambah Titik Contoh
+            </button>
+            <button class="button-simulasi" onclick="clearAll()">
+              Hapus Semua Titik & Hull
+            </button>
+
+            <div class="input-group">
+              <label>Titik Saat Ini:</label>
+              <div id="pointsList"></div>
+            </div>
+
+            <div class="input-group">
+              <h2>Pilihan Algoritma untuk Kontrol Langkah:</h2>
+              <div class="radio-group">
+                <input
+                  type="radio"
+                  id="grahamScanRadio"
+                  name="algorithm"
+                  value="graham_scan"
+                  checked
+                />
+                <label for="grahamScanRadio">Graham Scan</label>
+                <input
+                  type="radio"
+                  id="giftWrappingRadio"
+                  name="algorithm"
+                  value="gift_wrapping"
+                />
+                <label for="giftWrappingRadio"
+                  >Gift Wrapping (Jarvis March)</label
+                >
+              </div>
+              <button class="button-simulasi" onclick="prepareAllSimulations()">
+                Mulai Simulasi (Siapkan & Putar Keduanya)
+              </button>
+            </div>
+            <p class="error-message" id="errorMessage"></p>
+
+            <div class="step-controls">
+              <h3>Navigasi Per Langkah (untuk Algoritma Terpilih)</h3>
+              <div class="step-description">
+                <span id="currentStepText">Simulasi belum dimulai.</span>
+              </div>
+              <br />
+              <button
+                class="button-simulasi"
+                id="prevBtn"
+                onclick="prevStepSelectedSim()"
+                disabled
+              >
+                Langkah Sebelumnya
+              </button>
+              <button
+                class="button-simulasi"
+                id="nextBtn"
+                onclick="nextStepSelectedSim()"
+                disabled
+              >
+                Langkah Berikutnya
+              </button>
+              <button
+                class="button-simulasi"
+                id="playPauseBtn"
+                onclick="togglePlayPauseSelectedSim()"
+                disabled
+              >
+                Putar
+              </button>
+              <button
+                class="button-simulasi"
+                id="resetSimBtn"
+                onclick="resetSelectedSim()"
+                disabled
+              >
+                Reset Simulasi Terpilih
+              </button>
+              <br /><br />
+              <label for="speedSlider">Kecepatan Animasi (Global):</label>
+              <input
+                type="range"
+                id="speedSlider"
+                min="50"
+                max="2000"
+                value="500"
+              />
+            </div>
+          </div>
+
+          <div class="visualization-info">
+            <span id="activeCanvasDisplay"
+              >Kontrol navigasi saat ini untuk: Graham Scan</span
+            >
+          </div>
+
+          <div class="canvas-section-wrapper">
+            <div class="canvas-section">
+              <h3>Graham Scan</h3>
+              <canvas
+                id="grahamScanCanvas"
+                class="sim-canvas"
+                width="450"
+                height="450"
+              ></canvas>
+              <p class="results-info" id="grahamHullPointsInfo"></p>
+            </div>
+            <div class="canvas-section">
+              <h3>Gift Wrapping</h3>
+              <canvas
+                id="giftWrappingCanvas"
+                class="sim-canvas"
+                width="450"
+                height="450"
+              ></canvas>
+              <p class="results-info" id="giftHullPointsInfo"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/script.js"></script>
+    <script>
+      // ... KODE JAVASCRIPT SIMULASI TIDAK BERUBAH ...
+      const grahamScanCanvas = document.getElementById("grahamScanCanvas");
+      const grahamScanCtx = grahamScanCanvas.getContext("2d");
+      const giftWrappingCanvas = document.getElementById("giftWrappingCanvas");
+      const giftWrappingCtx = giftWrappingCanvas.getContext("2d");
+
+      const pointsListElement = document.getElementById("pointsList");
+      const errorMessageElement = document.getElementById("errorMessage");
+      const currentStepTextElement = document.getElementById("currentStepText");
+      const activeCanvasDisplayElement = document.getElementById(
+        "activeCanvasDisplay"
+      );
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      const playPauseBtn = document.getElementById("playPauseBtn");
+      const resetSimBtn = document.getElementById("resetSimBtn");
+      const speedSlider = document.getElementById("speedSlider");
+      const grahamScanRadio = document.getElementById("grahamScanRadio");
+      const giftWrappingRadio = document.getElementById("giftWrappingRadio");
+
+      const grahamHullPointsInfoElement = document.getElementById(
+        "grahamHullPointsInfo"
+      );
+      const giftHullPointsInfoElement =
+        document.getElementById("giftHullPointsInfo");
+
+      let points = []; // Global points for both simulations
+      let animationSpeed = 500; // ms
+
+      // Kelas untuk mengelola setiap simulasi secara independen
+      class ConvexHullSimulation {
+        constructor(
+          canvas,
+          ctx,
+          algorithmName,
+          stepsGenerator,
+          resultDisplayElement
+        ) {
+          this.canvas = canvas;
+          this.ctx = ctx;
+          this.algorithmName = algorithmName;
+          this.stepsGenerator = stepsGenerator;
+          this.resultDisplayElement = resultDisplayElement;
+
+          this.currentSteps = [];
+          this.currentStepIndex = -1;
+          this.animationInterval = null;
+          this.isActiveControlled = false; // True if this simulation is controlled by main buttons
+        }
+
+        // --- Fungsi Penggambaran ---
+        drawPoint(point, color = "blue", radius = 5, label = true) {
+          this.ctx.beginPath();
+          this.ctx.arc(point.x, point.y, radius, 0, Math.PI * 2);
+          this.ctx.fillStyle = color;
+          this.ctx.fill();
+          this.ctx.strokeStyle = "black";
+          this.ctx.lineWidth = 1;
+          this.ctx.stroke();
+          if (label) {
+            this.ctx.fillStyle = "white"; /* Ubah warna teks label titik */
+            this.ctx.font = "10px Arial";
+            this.ctx.fillText(
+              `(${point.x},${point.y})`,
+              point.x + 7,
+              point.y + 3
+            );
+          }
+        }
+
+        drawLine(p1, p2, color = "red", width = 2) {
+          this.ctx.beginPath();
+          this.ctx.moveTo(p1.x, p1.y);
+          this.ctx.lineTo(p2.x, p2.y);
+          this.ctx.strokeStyle = color;
+          this.ctx.lineWidth = width;
+          this.ctx.stroke();
+        }
+
+        redraw(stepState = null) {
+          this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+          // Draw all general points
+          points.forEach((p) => this.drawPoint(p, "blue"));
+
+          if (stepState) {
+            // Gambar hull saat ini (merah solid)
+            if (stepState.currentHull && stepState.currentHull.length > 1) {
+              for (let i = 0; i < stepState.currentHull.length; i++) {
+                const p1 = stepState.currentHull[i];
+                const p2 =
+                  stepState.currentHull[(i + 1) % stepState.currentHull.length];
+                this.drawLine(p1, p2, "red", 3);
+                this.drawPoint(p1, "red", 6);
+              }
+            }
+
+            // Gambar garis/sorotan sementara
+            if (stepState.highlightLines) {
+              stepState.highlightLines.forEach((line) => {
+                this.drawLine(
+                  line.p1,
+                  line.p2,
+                  line.color || "purple",
+                  line.width || 2
+                );
+              });
+            }
+
+            // Sorot titik-titik tertentu
+            if (stepState.highlightPoints) {
+              stepState.highlightPoints.forEach((hp) => {
+                this.drawPoint(
+                  hp.point,
+                  hp.color || "green",
+                  hp.radius || 8,
+                  false
+                ); // Tanpa label untuk sorotan
+              });
+            }
+          }
+        }
+
+        prepare() {
+          if (points.length < 3) {
+            this.currentSteps = [];
+            this.currentStepIndex = -1;
+            this.resultDisplayElement.textContent = ``;
+            this.redraw();
+            return false;
+          }
+
+          this.currentSteps = [];
+          this.currentStepIndex = -1;
+          this.stepsGenerator(points, this.currentSteps);
+
+          if (this.currentSteps.length > 0) {
+            this.currentStepIndex = 0;
+            this.showCurrentStep();
+            return true;
+          } else {
+            this.resultDisplayElement.textContent = `[${this.algorithmName}] Gagal menghasilkan langkah.`;
+            this.redraw();
+            return false;
+          }
+        }
+
+        showCurrentStep() {
+          if (
+            this.currentStepIndex >= 0 &&
+            this.currentStepIndex < this.currentSteps.length
+          ) {
+            const step = this.currentSteps[this.currentStepIndex];
+            this.redraw(step);
+
+            if (this.isActiveControlled) {
+              currentStepTextElement.textContent = `Langkah ${
+                this.currentStepIndex + 1
+              }/${this.currentSteps.length} (${this.algorithmName}): ${
+                step.description
+              }`;
+            }
+
+            // Jika ini adalah langkah terakhir, perbarui hasil hull akhir
+            if (this.currentStepIndex === this.currentSteps.length - 1) {
+              this.displayFinalResults(step.currentHull);
+            } else {
+              this.displayFinalResults([]); // Hapus info jika belum akhir
+            }
+          } else {
+            this.redraw();
+            this.displayFinalResults([]);
+            if (this.isActiveControlled) {
+              currentStepTextElement.textContent = `Simulasi belum dimulai.`;
+            }
+          }
+          // Hanya update kontrol jika simulasi ini yang sedang aktif dikontrol
+          if (this.isActiveControlled) {
+            this.updateControls();
+          }
+        }
+
+        nextStep() {
+          if (this.currentStepIndex < this.currentSteps.length - 1) {
+            this.currentStepIndex++;
+            this.showCurrentStep();
+          } else {
+            this.togglePlayPause(true); // Berhenti jika sudah di akhir
+            if (this.isActiveControlled) {
+              currentStepTextElement.textContent = `Simulasi ${
+                this.algorithmName
+              } Selesai. Langkah ${this.currentSteps.length}/${
+                this.currentSteps.length
+              }: ${
+                this.currentSteps[this.currentSteps.length - 1].description
+              }`;
+            }
+          }
+        }
+
+        prevStep() {
+          if (this.currentStepIndex > 0) {
+            this.currentStepIndex--;
+            this.togglePlayPause(true); // Pause before prev step
+            this.showCurrentStep();
+          }
+        }
+
+        togglePlayPause(forcePause = false) {
+          if (forcePause || this.animationInterval) {
+            clearInterval(this.animationInterval);
+            this.animationInterval = null;
+            if (this.isActiveControlled) {
+              playPauseBtn.textContent = "Putar";
+            }
+          } else {
+            if (this.currentSteps.length === 0) {
+              // Jika belum disiapkan, coba siapkan
+              if (!this.prepare()) {
+                if (this.isActiveControlled)
+                  displayError(
+                    "Tidak cukup titik untuk simulasi. Tambahkan setidaknya 3 titik."
+                  );
+                return;
+              }
+            } else if (this.currentStepIndex >= this.currentSteps.length - 1) {
+              // Jika sudah di akhir, reset ke awal sebelum putar
+              this.currentStepIndex = 0;
+              this.showCurrentStep(); // Tampilkan langkah pertama
+            }
+            this.animationInterval = setInterval(
+              () => this.nextStep(),
+              animationSpeed
+            );
+            if (this.isActiveControlled) {
+              playPauseBtn.textContent = "Jeda";
+            }
+          }
+          if (this.isActiveControlled) {
+            // Pastikan hanya update kontrol yang aktif
+            this.updateControls();
+          }
+        }
+
+        reset() {
+          this.togglePlayPause(true); // Hentikan animasi yang sedang berjalan
+          this.currentSteps = [];
+          this.currentStepIndex = -1;
+          this.redraw(); // Gambar titik saja
+          this.resultDisplayElement.textContent = ""; // Hapus info hasil
+          if (this.isActiveControlled) {
+            currentStepTextElement.textContent = "Simulasi belum dimulai.";
+            this.updateControls();
+          }
+        }
+
+        displayFinalResults(hull) {
+          if (hull.length === 0) {
+            this.resultDisplayElement.textContent =
+              "Convex Hull: (Belum ada / Tidak cukup titik)";
+          } else {
+            const hullString = hull.map((p) => `(${p.x},${p.y})`).join(" -> ");
+            this.resultDisplayElement.textContent = `CH: ${hullString}`;
+          }
+        }
+
+        updateControls() {
+          // Tombol prev dan next hanya aktif jika ada langkah
+          prevBtn.disabled =
+            this.currentStepIndex <= 0 || this.currentSteps.length === 0;
+          nextBtn.disabled =
+            this.currentStepIndex >= this.currentSteps.length - 1 ||
+            this.currentSteps.length === 0;
+          // Tombol play/pause dan reset aktif jika ada setidaknya 3 titik
+          playPauseBtn.disabled = points.length < 3;
+          resetSimBtn.disabled = points.length < 3;
+          playPauseBtn.textContent = this.animationInterval ? "Jeda" : "Putar";
+        }
+      }
+
+      // Inisialisasi Objek Simulasi untuk masing-masing algoritma
+      const grahamScanSim = new ConvexHullSimulation(
+        grahamScanCanvas,
+        grahamScanCtx,
+        "Graham Scan",
+        generateGrahamScanSteps,
+        grahamHullPointsInfoElement
+      );
+      const giftWrappingSim = new ConvexHullSimulation(
+        giftWrappingCanvas,
+        giftWrappingCtx,
+        "Gift Wrapping",
+        generateGiftWrappingSteps,
+        giftHullPointsInfoElement
+      );
+
+      let activeControlledSim = grahamScanSim; // Secara default, kontrol Graham Scan
+
+      // --- Fungsi Pembaruan UI Global ---
+      function updatePointsList() {
+        pointsListElement.innerHTML = "";
+        if (points.length === 0) {
+          pointsListElement.innerHTML =
+            "<span>Belum ada titik yang ditambahkan.</span>";
+          return;
+        }
+        points.forEach((p, index) => {
+          const span = document.createElement("span");
+          span.textContent = `Titik ${index + 1}: (${p.x}, ${p.y})`;
+          pointsListElement.appendChild(span);
+        });
+      }
+
+      function displayError(message) {
+        errorMessageElement.textContent = message;
+      }
+
+      function redrawAllCanvasesOnlyPoints() {
+        grahamScanSim.redraw();
+        giftWrappingSim.redraw();
+      }
+
+      // --- Penanganan Event Global ---
+      // Event listener pada kanvas Graham Scan untuk menambahkan titik
+      grahamScanCanvas.addEventListener("click", (event) => {
+        const rect = grahamScanCanvas.getBoundingClientRect();
+        const x = Math.round(event.clientX - rect.left);
+        const y = Math.round(event.clientY - rect.top);
+        points.push({ x, y });
+        resetAllSimulations(); // Reset semua simulasi setiap kali titik berubah
+        redrawAllCanvasesOnlyPoints();
+        updatePointsList();
+        displayError("");
+      });
+
+      // Event listener pada kanvas Gift Wrapping untuk menambahkan titik
+      giftWrappingCanvas.addEventListener("click", (event) => {
+        const rect = giftWrappingCanvas.getBoundingClientRect();
+        const x = Math.round(event.clientX - rect.left);
+        const y = Math.round(event.clientY - rect.top);
+        points.push({ x, y });
+        resetAllSimulations(); // Reset semua simulasi setiap kali titik berubah
+        redrawAllCanvasesOnlyPoints();
+        updatePointsList();
+        displayError("");
+      });
+
+      function addPointManual() {
+        const xInput = document.getElementById("xCoord");
+        const yInput = document.getElementById("yCoord");
+        const x = parseInt(xInput.value);
+        const y = parseInt(yInput.value);
+
+        if (isNaN(x) || isNaN(y)) {
+          displayError("Mohon masukkan angka yang valid untuk X dan Y.");
+          return;
+        }
+        if (
+          x < 0 ||
+          x > grahamScanCanvas.width ||
+          y < 0 ||
+          y > grahamScanCanvas.height
+        ) {
+          displayError(
+            `Koordinat harus berada dalam batas kanvas (0-${grahamScanCanvas.width}, 0-${grahamScanCanvas.height}).`
+          );
+          return;
+        }
+
+        points.push({ x, y });
+        xInput.value = "";
+        yInput.value = "";
+        resetAllSimulations();
+        redrawAllCanvasesOnlyPoints();
+        updatePointsList();
+        displayError("");
+      }
+
+      function addSamplePoints() {
+        clearAll();
+        points = [
+          { x: 50, y: 150 },
+          { x: 100, y: 50 },
+          { x: 200, y: 100 },
+          { x: 250, y: 200 },
+          { x: 150, y: 250 },
+          { x: 75, y: 200 },
+          { x: 120, y: 180 },
+          { x: 220, y: 120 },
+          { x: 300, y: 300 },
+          { x: 400, y: 50 },
+          { x: 450, y: 400 },
+          { x: 50, y: 450 },
+        ];
+        resetAllSimulations();
+        redrawAllCanvasesOnlyPoints();
+        updatePointsList();
+        displayError("");
+      }
+
+      function clearAll() {
+        points = [];
+        resetAllSimulations();
+        redrawAllCanvasesOnlyPoints();
+        updatePointsList();
+        displayError("");
+      }
+
+      speedSlider.addEventListener("input", (event) => {
+        animationSpeed = parseInt(event.target.value);
+        // Update speed for currently playing animations
+        if (grahamScanSim.animationInterval) {
+          grahamScanSim.togglePlayPause(true); // Pause current
+          grahamScanSim.togglePlayPause(); // Restart with new speed
+        }
+        if (giftWrappingSim.animationInterval) {
+          giftWrappingSim.togglePlayPause(true); // Pause current
+          giftWrappingSim.togglePlayPause(); // Restart with new speed
+        }
+      });
+
+      // Event listener for radio button changes
+      grahamScanRadio.addEventListener("change", () => {
+        activeControlledSim.isActiveControlled = false; // Nonaktifkan kontrol pada sim sebelumnya
+        activeControlledSim = grahamScanSim;
+        activeControlledSim.isActiveControlled = true; // Aktifkan kontrol pada sim yang baru
+        activeCanvasDisplayElement.textContent =
+          "Kontrol navigasi saat ini untuk: Graham Scan";
+        activeControlledSim.updateControls(); // Perbarui tampilan tombol kontrol
+        activeControlledSim.showCurrentStep(); // Tampilkan langkah saat ini dari sim yang terpilih
+      });
+      giftWrappingRadio.addEventListener("change", () => {
+        activeControlledSim.isActiveControlled = false;
+        activeControlledSim = giftWrappingSim;
+        activeControlledSim.isActiveControlled = true;
+        activeCanvasDisplayElement.textContent =
+          "Kontrol navigasi saat ini untuk: Gift Wrapping";
+        activeControlledSim.updateControls();
+        activeControlledSim.showCurrentStep();
+      });
+
+      // --- Kontrol Simulasi Utama (Mengontrol simulasi yang dipilih) ---
+      function prepareAllSimulations() {
+        if (points.length < 3) {
+          displayError(
+            "Mohon sediakan setidaknya 3 titik untuk menyiapkan simulasi."
+          );
+          return;
+        }
+        displayError(""); // Hapus kesalahan sebelumnya
+
+        // Siapkan kedua simulasi
+        grahamScanSim.prepare();
+        giftWrappingSim.prepare();
+
+        // Aktifkan tombol kontrol setelah simulasi disiapkan
+        activeControlledSim.updateControls();
+        // Langsung putar simulasi yang aktif setelah persiapan
+        activeControlledSim.togglePlayPause();
+      }
+
+      function nextStepSelectedSim() {
+        activeControlledSim.nextStep();
+      }
+
+      function prevStepSelectedSim() {
+        activeControlledSim.prevStep();
+      }
+
+      function togglePlayPauseSelectedSim() {
+        activeControlledSim.togglePlayPause();
+      }
+
+      function resetSelectedSim() {
+        activeControlledSim.reset();
+      }
+
+      function resetAllSimulations() {
+        grahamScanSim.reset();
+        giftWrappingSim.reset();
+        // Setelah reset semua, pastikan kontrol kembali ke kondisi awal (disabled jika kurang dari 3 titik)
+        activeControlledSim.updateControls();
+      }
+
+      // --- Algoritma Convex Hull Inti (Diterjemahkan ke JavaScript untuk Per Langkah) ---
+
+      // Fungsi bantu untuk cross product (orientasi)
+      function crossProduct(p, q, r) {
+        return (q.x - p.x) * (r.y - p.y) - (q.y - p.y) * (r.x - p.x);
+      }
+
+      // Fungsi bantu untuk kuadrat jarak (untuk memecahkan ikatan di sudut polar)
+      function distSq(p1, p2) {
+        return (p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2;
+      }
+
+      // Fungsi bantu untuk sudut polar
+      function polarAngle(p0, p1) {
+        return Math.atan2(p1.y - p0.y, p1.x - p0.x);
+      }
+
+      // Algoritma Graham Scan yang Dimodifikasi untuk menghasilkan langkah
+      function generateGrahamScanSteps(pts, stepsArray) {
+        if (pts.length <= 2) {
+          const hull = [...pts].sort((a, b) => a.x - b.x || a.y - b.y);
+          stepsArray.push({
+            description: `Kurang dari 3 titik, semua titik membentuk hull.`,
+            currentHull: hull,
+            highlightPoints: hull.map((p) => ({ point: p, color: "red" })),
+          });
+          return;
+        }
+
+        // Salin dalam (deep copy) titik-titik untuk menghindari modifikasi array asli
+        const mutablePoints = JSON.parse(JSON.stringify(pts));
+
+        // 1. Temukan P0 (Y terendah, lalu X terendah jika Y sama)
+        let p0 = mutablePoints[0];
+        for (let i = 1; i < mutablePoints.length; i++) {
+          if (
+            mutablePoints[i].y < p0.y ||
+            (mutablePoints[i].y === p0.y && mutablePoints[i].x < p0.x)
+          ) {
+            p0 = mutablePoints[i];
+          }
+        }
+
+        stepsArray.push({
+          description: `Pilih titik terbawah paling kiri (P0) sebagai titik referensi: (${p0.x},${p0.y}).`,
+          currentHull: [],
+          highlightPoints: [{ point: p0, color: "red" }],
+        });
+
+        // 2. Urutkan titik-titik berdasarkan sudut polar relatif terhadap P0
+        // Filter P0 dari mutablePoints sementara, kemudian tambahkan kembali di awal
+        const otherPoints = mutablePoints.filter((p) => p !== p0);
+
+        otherPoints.sort((a, b) => {
+          const angleA = polarAngle(p0, a);
+          const angleB = polarAngle(p0, b);
+
+          if (angleA - angleB === 0) {
+            // Sudut sama, urutkan berdasarkan jarak
+            return distSq(p0, a) - distSq(p0, b);
+          }
+          return angleA - angleB;
+        });
+        const sortedPoints = [p0, ...otherPoints]; // P0 selalu di awal
+
+        // Hapus titik kolinear yang tidak diperlukan setelah pengurutan (jika ada)
+        // Ini akan memastikan stack tidak berisi titik tengah yang tidak perlu
+        let filteredPoints = [sortedPoints[0]];
+        if (sortedPoints.length > 1) {
+          for (let i = 1; i < sortedPoints.length; i++) {
+            // Jika titik saat ini, titik sebelumnya, dan P0 adalah kolinear,
+            // dan titik sebelumnya bukan P0, buang titik sebelumnya (karena titik saat ini lebih jauh)
+            while (
+              filteredPoints.length > 1 &&
+              crossProduct(
+                filteredPoints[filteredPoints.length - 2],
+                filteredPoints[filteredPoints.length - 1],
+                sortedPoints[i]
+              ) === 0 &&
+              filteredPoints[filteredPoints.length - 1] !== p0
+            ) {
+              filteredPoints.pop();
+            }
+            filteredPoints.push(sortedPoints[i]);
+          }
+        }
+
+        if (filteredPoints.length < 3) {
+          stepsArray.push({
+            description: `Setelah penyaringan, kurang dari 3 titik tersisa. Convex hull adalah titik-titik ini.`,
+            currentHull: filteredPoints,
+            highlightPoints: filteredPoints.map((p) => ({
+              point: p,
+              color: "red",
+            })),
+          });
+          return;
+        }
+
+        stepsArray.push({
+          description: `Titik-titik diurutkan berdasarkan sudut polar terhadap P0 dan titik kolinear yang lebih dekat dihapus.`,
+          currentHull: [],
+          highlightPoints: [{ point: p0, color: "red" }].concat(
+            filteredPoints.slice(1).map((p) => ({ point: p, color: "blue" }))
+          ),
+          highlightLines: filteredPoints
+            .slice(1)
+            .map((p) => ({ p1: p0, p2: p, color: "gray", width: 1 })),
+        });
+
+        // 3. Bangun Convex Hull menggunakan stack
+        const stack = [];
+        stack.push(filteredPoints[0], filteredPoints[1], filteredPoints[2]);
+
+        stepsArray.push({
+          description: `Inisialisasi stack dengan 3 titik pertama (P0, P1, P2) setelah pengurutan.`,
+          currentHull: [...stack],
+          highlightPoints: stack.map((p) => ({ point: p, color: "green" })),
+          highlightLines: [
+            { p1: stack[0], p2: stack[1], color: "orange", width: 2 },
+            { p1: stack[1], p2: stack[2], color: "orange", width: 2 },
+          ],
+        });
+
+        for (let i = 3; i < filteredPoints.length; i++) {
+          const currentPoint = filteredPoints[i];
+          stepsArray.push({
+            description: `Memproses Titik P${i} (${currentPoint.x},${
+              currentPoint.y
+            }). Stack: ${stack.map((p) => `(${p.x},${p.y})`).join(", ")}`,
+            currentHull: [...stack],
+            highlightPoints: stack
+              .map((p) => ({ point: p, color: "green" }))
+              .concat([{ point: currentPoint, color: "purple", radius: 8 }]),
+            highlightLines: [
+              {
+                p1: stack[stack.length - 2],
+                p2: stack[stack.length - 1],
+                color: "orange",
+                width: 2,
+              },
+              {
+                p1: stack[stack.length - 1],
+                p2: currentPoint,
+                color: "blue",
+                width: 2,
+              },
+            ],
+          });
+
+          while (
+            stack.length >= 2 &&
+            crossProduct(
+              stack[stack.length - 2],
+              stack[stack.length - 1],
+              currentPoint
+            ) <= 0
+          ) {
+            const popped = stack.pop();
+            stepsArray.push({
+              description: `Deteksi belokan non-kiri. Pop (${popped.x},${
+                popped.y
+              }) dari stack. Stack: ${stack
+                .map((p) => `(${p.x},${p.y})`)
+                .join(", ")}`,
+              currentHull: [...stack],
+              highlightPoints: stack
+                .map((p) => ({ point: p, color: "green" }))
+                .concat([{ point: currentPoint, color: "purple", radius: 8 }]),
+              highlightLines:
+                stack.length >= 2
+                  ? [
+                      {
+                        p1: stack[stack.length - 2],
+                        p2: stack[stack.length - 1],
+                        color: "orange",
+                        width: 2,
+                      },
+                      {
+                        p1: stack[stack.length - 1],
+                        p2: currentPoint,
+                        color: "blue",
+                        width: 2,
+                      },
+                    ]
+                  : [
+                      {
+                        p1: stack[0],
+                        p2: currentPoint,
+                        color: "blue",
+                        width: 2,
+                      },
+                    ],
+            });
+          }
+          stack.push(currentPoint);
+          stepsArray.push({
+            description: `Titik (${currentPoint.x},${
+              currentPoint.y
+            }) ditambahkan ke stack. Stack: ${stack
+              .map((p) => `(${p.x},${p.y})`)
+              .join(", ")}`,
+            currentHull: [...stack],
+            highlightPoints: stack.map((p) => ({ point: p, color: "green" })),
+          });
+        }
+
+        // Langkah terakhir: hasil akhir
+        stepsArray.push({
+          description: `Graham Scan Selesai. Convex hull terbentuk.`,
+          currentHull: stack,
+          highlightPoints: stack.map((p) => ({ point: p, color: "red" })),
+          highlightLines: stack.map((p, idx, arr) => ({
+            p1: p,
+            p2: arr[(idx + 1) % arr.length],
+            color: "red",
+            width: 3,
+          })),
+        });
+      }
+
+      // Algoritma Gift Wrapping (Jarvis March) yang Dimodifikasi untuk menghasilkan langkah
+      function generateGiftWrappingSteps(pts, stepsArray) {
+        if (pts.length <= 2) {
+          const hull = [...pts].sort((a, b) => a.x - b.x || a.y - b.y);
+          stepsArray.push({
+            description: `Kurang dari 3 titik, semua titik membentuk hull.`,
+            currentHull: hull,
+            highlightPoints: hull.map((p) => ({ point: p, color: "red" })),
+          });
+          return;
+        }
+
+        const mutablePoints = JSON.parse(JSON.stringify(pts)); // Deep copy
+
+        // Temukan titik paling kiri (dan paling bawah jika ada ikatan X) sebagai titik awal
+        let startPoint = mutablePoints[0];
+        for (let i = 1; i < mutablePoints.length; i++) {
+          if (
+            mutablePoints[i].x < startPoint.x ||
+            (mutablePoints[i].x === startPoint.x &&
+              mutablePoints[i].y < startPoint.y)
+          ) {
+            startPoint = mutablePoints[i];
+          }
+        }
+
+        stepsArray.push({
+          description: `Mulai dengan titik paling kiri (P0): (${startPoint.x},${startPoint.y}).`,
+          currentHull: [],
+          highlightPoints: [{ point: startPoint, color: "red", radius: 8 }],
+        });
+
+        const hull = [];
+        let currentPoint = startPoint;
+        let nextPointCandidate; // Untuk menyimpan kandidat terbaik di setiap iterasi
+
+        do {
+          hull.push(currentPoint);
+          stepsArray.push({
+            description: `Titik (${currentPoint.x},${currentPoint.y}) ditambahkan ke hull. Mencari titik berikutnya.`,
+            currentHull: [...hull],
+            highlightPoints: hull
+              .map((p) => ({ point: p, color: "red", radius: 6 }))
+              .concat([{ point: currentPoint, color: "green", radius: 8 }]),
+            highlightLines:
+              hull.length > 1
+                ? [
+                    {
+                      p1: hull[hull.length - 2],
+                      p2: hull[hull.length - 1],
+                      color: "red",
+                      width: 3,
+                    },
+                  ]
+                : [],
+          });
+
+          // Inisialisasi nextPointCandidate dengan titik pertama yang bukan currentPoint
+          nextPointCandidate = null;
+          for (const p of mutablePoints) {
+            if (p !== currentPoint) {
+              nextPointCandidate = p;
+              break;
+            }
+          }
+
+          if (!nextPointCandidate) {
+            // Hanya 1 titik atau semua titik sama
+            break;
+          }
+
+          for (const p of mutablePoints) {
+            if (p === currentPoint) continue;
+
+            const orientation = crossProduct(
+              currentPoint,
+              nextPointCandidate,
+              p
+            );
+
+            // Jika 'p' adalah belok kiri (CW), itu adalah kandidat 'nextPoint' yang lebih baik
+            if (orientation > 0) {
+              nextPointCandidate = p;
+              stepsArray.push({
+                description: `Titik (${p.x},${p.y}) membentuk belokan kiri. Update nextPoint kandidat ke (${nextPointCandidate.x},${nextPointCandidate.y}).`,
+                currentHull: [...hull],
+                highlightPoints: hull
+                  .map((p) => ({ point: p, color: "red" }))
+                  .concat([
+                    { point: currentPoint, color: "green", radius: 8 },
+                    { point: nextPointCandidate, color: "orange", radius: 6 },
+                  ]),
+                highlightLines: [
+                  {
+                    p1: currentPoint,
+                    p2: nextPointCandidate,
+                    color: "purple",
+                    width: 2,
+                  },
+                ],
+              });
+            }
+            // Jika kolinear (orientation == 0), pilih yang lebih jauh
+            else if (orientation === 0) {
+              if (
+                distSq(currentPoint, p) >
+                distSq(currentPoint, nextPointCandidate)
+              ) {
+                nextPointCandidate = p;
+                stepsArray.push({
+                  description: `Titik (${p.x},${p.y}) kolinear tapi lebih jauh. Update nextPoint kandidat ke (${nextPointCandidate.x},${nextPointCandidate.y}).`,
+                  currentHull: [...hull],
+                  highlightPoints: hull
+                    .map((p) => ({ point: p, color: "red" }))
+                    .concat([
+                      { point: currentPoint, color: "green", radius: 8 },
+                      { point: nextPointCandidate, color: "orange", radius: 6 },
+                    ]),
+                  highlightLines: [
+                    {
+                      p1: currentPoint,
+                      p2: nextPointCandidate,
+                      color: "purple",
+                      width: 2,
+                    },
+                  ],
+                });
+              } else {
+                stepsArray.push({
+                  description: `Titik (${p.x},${p.y}) kolinear tapi tidak lebih jauh. Lewati.`,
+                  currentHull: [...hull],
+                  highlightPoints: hull
+                    .map((p) => ({ point: p, color: "red" }))
+                    .concat([
+                      { point: currentPoint, color: "green", radius: 8 },
+                      { point: nextPointCandidate, color: "orange", radius: 6 },
+                      { point: p, color: "gray", radius: 4 },
+                    ]),
+                  highlightLines: [
+                    {
+                      p1: currentPoint,
+                      p2: nextPointCandidate,
+                      color: "purple",
+                      width: 2,
+                    },
+                    { p1: currentPoint, p2: p, color: "gray", width: 1 },
+                  ],
+                });
+              }
+            } else {
+              // Belok kanan (CCW)
+              stepsArray.push({
+                description: `Titik (${p.x},${p.y}) membentuk belokan kanan (tidak cocok).`,
+                currentHull: [...hull],
+                highlightPoints: hull
+                  .map((p) => ({ point: p, color: "red" }))
+                  .concat([
+                    { point: currentPoint, color: "green", radius: 8 },
+                    { point: nextPointCandidate, color: "orange", radius: 6 },
+                    { point: p, color: "gray", radius: 4 },
+                  ]),
+                highlightLines: [
+                  {
+                    p1: currentPoint,
+                    p2: nextPointCandidate,
+                    color: "purple",
+                    width: 2,
+                  },
+                  { p1: currentPoint, p2: p, color: "gray", width: 1 },
+                ],
+              });
+            }
+          }
+          currentPoint = nextPointCandidate;
+        } while (
+          !(currentPoint.x === startPoint.x && currentPoint.y === startPoint.y)
+        ); // Loop sampai kita kembali ke titik awal
+
+        // Langkah terakhir (jika loop selesai secara alami)
+        if (
+          hull.length > 0 &&
+          currentPoint.x === startPoint.x &&
+          currentPoint.y === startPoint.y
+        ) {
+          stepsArray.push({
+            description: `Mencapai titik awal ${JSON.stringify(
+              startPoint
+            )}. Konstruksi convex hull selesai!`,
+            currentHull: hull,
+            highlightPoints: hull.map((p) => ({ point: p, color: "red" })),
+            highlightLines: [
+              {
+                p1: hull[hull.length - 1],
+                p2: hull[0],
+                color: "red",
+                width: 3,
+              },
+            ], // Garis penutup akhir
+          });
+        }
+      }
+
+      // Initial setup for simulation (called when DOM is ready)
+      document.addEventListener("DOMContentLoaded", () => {
+        // Set initial active controlled simulation
+        activeControlledSim.isActiveControlled = true;
+        grahamScanSim.redraw();
+        giftWrappingSim.redraw();
+        updatePointsList();
+        activeControlledSim.updateControls(); // Update controls based on initially active sim
+      });
+    </script>
+  </body>
+</html>
