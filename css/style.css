@@ -11,7 +11,6 @@
   --border-color: rgba(255, 255, 255, 0.1);
   --glow-color: rgba(169, 99, 209, 0.7);
   --bg-4-top-color: #1e4e5b;
-  /* [DIKEMBALIKAN] Variabel Warna Hijau Telur Asin */
   --sim-text-green: #c7f2a4;
   --telur-asin-green: #a7d7c5;
   --telur-asin-green-hover: #89b4a4;
@@ -655,7 +654,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 5rem 7%;
+  padding: 5rem 7%; /* Padding awal untuk desktop */
   background-image: url("../img/bg-6.gif");
   background-size: cover;
   background-position: center top;
@@ -669,6 +668,7 @@ body {
   max-width: 800px;
   padding: 2rem;
   border-radius: 15px;
+  width: 100%; /* [DITAMBAHKAN] Pastikan content mengisi padding */
 }
 
 .simulasi-intro .wizard-title {
@@ -715,7 +715,6 @@ body {
   overflow: hidden;
 }
 
-/* [DITAMBAHKAN] Kontainer Salju */
 #snow-container {
   position: absolute;
   top: 0;
@@ -742,7 +741,6 @@ body {
     transform: translateY(110vh) translateX(5vw);
   }
 }
-/* Akhir Penambahan Salju */
 
 .container-simulasi {
   max-width: 1000px;
@@ -911,7 +909,12 @@ body {
 /* Media Queries */
 @media (max-width: 992px) {
   .convex-hull-wrapper {
+    flex-direction: column; /* [DIPERBAIKI] Agar tumpuk ke bawah */
     text-align: center;
+  }
+  .convex-hull-text {
+    padding-right: 0; /* [DIPERBAIKI] Hapus padding kanan */
+    margin-bottom: 2rem; /* [DIPERBAIKI] Beri jarak ke bawah */
   }
 }
 
@@ -951,7 +954,25 @@ body {
     width: 100%;
     height: auto;
   }
+
+  /* [DIPERBAIKI] Perbaikan untuk bagian simulasi intro di layar tablet */
+  .simulasi-intro {
+    padding: 4rem 4%; /* Kurangi padding horizontal */
+  }
+  .simulasi-intro .wizard-title h3 {
+    font-size: 1.8rem; /* Kecilkan judul */
+    letter-spacing: 0.1rem;
+    white-space: normal; /* Izinkan teks judul untuk wrap */
+  }
+  .simulasi-intro-text {
+    font-size: 1rem; /* Kecilkan teks paragraf */
+  }
+  .cta-button {
+    padding: 0.8rem 2rem; /* Kecilkan tombol */
+    font-size: 1.1rem;
+  }
 }
+
 @media (max-width: 758px) {
   html {
     font-size: 62.5%;
@@ -1000,5 +1021,13 @@ body {
   }
   .wizard-title .ornament {
     display: none;
+  }
+
+  /* [DIPERBAIKI] Perbaikan lebih lanjut untuk layar HP */
+  .simulasi-intro {
+    padding: 5rem 2%; /* Kurangi padding lebih banyak */
+  }
+  .simulasi-intro .wizard-title h3 {
+    font-size: 1.5rem; /* Kecilkan judul lebih lanjut */
   }
 }
